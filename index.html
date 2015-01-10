@@ -6,12 +6,171 @@
   <style>
     body { 
       margin: 0;
+      position: relative;
     }
     .fullWidth {
       width: 100%;
+      border:0;
+      margin:0;
+      line-height: 0;
+      display: block;
+    }
+    .section {
+      position: relative;
+    }
+    .imageList {
+      padding: 10px;
+      position: relative;
+    }
+    .imageList > ul {
+      list-style-type: none;
+      padding: 0;
+      margin: 0;
+      position: relative;
+    }
+    .imageList > ul > li {
+      position: relative;
+    }
+    .imageList > ul > li + li {
+      margin-top: 10px;
+    }
+    .solutionSect {
+      background-color: #3399ff;
+    }
+    .storeSect {
+      background-color: #0066ff;
+    }
+    .developerSect {
+      background-color: #000099;
+    }
+    .contectSect {
+      background-color: #000000;
+    }
+    .sectionHeader {
+      position: relative;
+    }
+    .sectionBody {
+      position: relative;
+    }
+    .headerButton {
+      position: absolute;
+      height: 100%;
+      margin: 0;
+      margin-right: 10px;
+      top: 0;
+      right: 0;
+    }
+    .headerButton.openButton {
+      display: block;
+    }
+    .closedSect .headerButton.openButton {
+      display: none;
+    }
+    .headerButton.closedButton {
+      display: none;
+    }
+    .closedSect .headerButton.closedButton {
+      display: block;
+    }
+    .section .sectionBody,
+    .section.closedSect .sectionBody {
+      overflow: hidden;
+      -webkit-transition: max-height 0.8s;
+      -moz-transition: max-height 0.8s; 
+      transition: max-height 0.8s;
     }
   </style>
+  <script language="javascript">
+    function clickSect(sectID) {
+      var elem = document.getElementById(sectID);
+      var body_elem = document.getElementById(sectID + 'Body');
+      if ((' ' + elem.className + ' ').indexOf(' closedSect ') > -1) {
+        elem.className = elem.className.replace('closedSect', '');
+        var height = document.getElementById(sectID + 'InnerBody').clientHeight;
+        body_elem.style.maxHeight = height + 'px';
+      } else {
+        elem.className = elem.className + 'closedSect';
+        body_elem.style.maxHeight = '0';
+      }
+    }
+  </script>
   <body>
     <img class="fullWidth" src="img/header.jpg" />
+    <img class="fullWidth" src="img/home_1.jpg" />
+    <img class="fullWidth" src="img/home_2.jpg" />
+    <img class="fullWidth" src="img/home_3.jpg" />
+    <img class="fullWidth" src="img/home_4.jpg" />
+    <div class="section solutionSect closedSect" id="solutionSect">
+      <div class="sectionHeader" onclick="clickSect('solutionSect')">
+        <img class="fullWidth" src="img/title_solutions.png" />
+        <img class="headerButton openButton" src="img/extention_1.png" />
+        <img class="headerButton closedButton" src="img/extention_2.png" />
+      </div>
+      <div class="sectionBody" id="solutionSectBody" style="max-height: 0">
+      <div id="solutionSectInnerBody">
+        <img class="fullWidth" src="img/header_solution.png" />
+        <div class="imageList">
+          <ul>
+            <li><img class="fullWidth" src="img/solutions_retail.jpg" /></li>
+            <li><img class="fullWidth" src="img/solutions_wholesale.jpg" /></li>
+            <li><img class="fullWidth" src="img/solutions_engineering.jpg" /></li>
+            <li><img class="fullWidth" src="img/solutions_hightech.jpg" /></li>
+          </ul>
+        </div>
+        <img class="fullWidth" src="img/tail_solutions.png" />
+      </div>
+      </div>
+    </div>
+    <div class="section storeSect closedSect" id="storeSect">
+      <div class="sectionHeader" onclick="clickSect('storeSect')">
+        <img class="fullWidth" src="img/title_app_store.png" />
+        <img class="headerButton openButton" src="img/extention_1.png" />
+        <img class="headerButton closedButton" src="img/extention_2.png" />
+      </div>
+      <div class="sectionBody" id="storeSectBody" style="max-height: 0">
+      <div id="storeSectInnerBody">
+        <img class="fullWidth" src="img/header_store.png" />
+        <div class="imageList">
+          <ul>
+            <li><img class="fullWidth" src="img/store_search.png" /></li>
+          </ul>
+        </div>
+        <img class="fullWidth" src="img/tail_store.png" />
+      </div>
+      </div>
+    </div>
+    <div class="section developerSect closedSect" id="developerSect">
+      <div class="sectionHeader" onclick="clickSect('developerSect')">
+        <img class="fullWidth" src="img/title_developers.png" />
+        <img class="headerButton openButton" src="img/extention_1.png" />
+        <img class="headerButton closedButton" src="img/extention_2.png" />
+      </div>
+      <div class="sectionBody" id="developerSectBody" style="max-height: 0">
+      <div id="developerSectInnerBody">
+        <img class="fullWidth" src="img/header_developer.png" />
+        <div class="imageList">
+          <ul>
+            <li><img class="fullWidth" src="img/developers_1.jpg" /></li>
+            <li><img class="fullWidth" src="img/developers_2.jpg" /></li>
+            <li><img class="fullWidth" src="img/developers_3.jpg" /></li>
+          </ul>
+        </div>
+        <img class="fullWidth" src="img/tail_developer.png" />
+      </div>
+      </div>
+    </div>
+    <div class="section contactSect closedSect" id="contactSect">
+      <div class="sectionHeader" onclick="clickSect('contactSect')">
+        <img class="fullWidth" src="img/title_contact.png" />
+        <img class="headerButton openButton" src="img/extention_1.png" />
+        <img class="headerButton closedButton" src="img/extention_2.png" />
+      </div>
+      <div class="sectionBody" id="contactSectBody" style="max-height: 0">
+      <div id="contactSectInnerBody">
+        <img class="fullWidth" src="img/contact.png" />
+      </div>
+      </div>
+    </div>
+    <img class="fullWidth" src="img/tail.jpg" />
   </body>
 </html>
