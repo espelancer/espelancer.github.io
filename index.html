@@ -148,16 +148,20 @@
     }
   </style>
   <script language="javascript">
+    function updateSectHeight(sectID) {
+      var body_elem = document.getElementById(sectID + 'Body');
+      var height = document.getElementById(sectID + 'InnerBody').clientHeight;
+      body_elem.style.maxHeight = height + 'px';
+    }
     function clickSect(sectID) {
       var elem = document.getElementById(sectID);
-      var body_elem = document.getElementById(sectID + 'Body');
       if ((' ' + elem.className + ' ').indexOf(' closedSect ') > -1) {
         elem.className = elem.className.replace('closedSect', '');
-        var height = document.getElementById(sectID + 'InnerBody').clientHeight;
-        body_elem.style.maxHeight = height + 'px';
+        updateSectHeight(sectID);
       } else {
         elem.className = elem.className + 'closedSect';
-        body_elem.style.maxHeight = '0';
+        var body_elem = document.getElementById(sectID + 'Body');
+        body_elem.style.maxHeight = '0px';
       }
     }
     jQuery(document).ready(function() {
@@ -179,10 +183,15 @@
         },
         callback: {
           onResult: function (node, query, obj, objCount) {
+            var elem = document.getElementById('storeSect');
+            if ((' ' + elem.className + ' ').indexOf(' closedSect ') > -1) {
+              return;
+            }
             if (query === "" || obj.length === 0) {
               var elem = document.getElementById('storeSearch');
               elem.className = elem.className.replace(' hasResult', '');
               document.getElementById('searchResult').innerHTML = "";
+              updateSectHeight('storeSect');
               return;
             }
             var content = "";
@@ -199,6 +208,7 @@
             });
             document.getElementById('storeSearch').className += ' hasResult';
             document.getElementById('searchResult').innerHTML = content;
+            updateSectHeight('storeSect');
         },
         }
       })
