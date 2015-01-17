@@ -138,8 +138,11 @@
     }
     .searchItem {
       position: relative;
-      margin: 24px;
+      padding: 24px;
       min-height: 160px;
+    }
+    .searchItem + .searchItem {
+      padding-top: 0;
     }
     .searchItem > .itemIcon {
       width: 160px;
@@ -159,10 +162,12 @@
     }
     .itemBody > .itemTitle {
       font-size: 60px;
+      font: arial;
       color: #3ecdfc;
     }
     .itemBody > .itemContext {
       font-size: 60px;
+      font: arial;
       color: #e1f2f9;
     }
   </style>
